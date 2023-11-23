@@ -50,9 +50,9 @@ public abstract class WeaponBase : MonoBehaviour
 
     private IEnumerator RefireTimer()
     {
-        print("Waiting for Cooldown");
+        
         yield return _coolDownEnforce;
-        print("Post Cooldown");
+        
 
         while(_currentChargeTime < chargeUpTime)
         {

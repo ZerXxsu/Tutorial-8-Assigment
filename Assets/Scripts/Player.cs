@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
 
     public void Shoot()
     {
-        print("I shot: " + InputManager.GetCameraRay());
+        //print("I shot: " + InputManager.GetCameraRay());
         weaponShootToggle = !weaponShootToggle;
         if(weaponShootToggle) myWeapon.StartShooting();
         else myWeapon.StopShooting();

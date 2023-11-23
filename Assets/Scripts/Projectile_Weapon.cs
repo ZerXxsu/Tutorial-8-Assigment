@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using Unity.VisualScripting;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
 public class ProjectileWeapon : WeaponBase
@@ -16,7 +18,18 @@ public class ProjectileWeapon : WeaponBase
     //Audio
     AudioSource shootSound;
 
-    
+
+    //Enums
+    [Flags]
+    public enum EprojectileType
+    {
+        Steel = 1,
+        Poison = 2,
+        Grass = 4,
+        Water = 8,
+    }
+
+    [field: SerializeField] public EprojectileType BulletType { get; private set; }
 
     protected override void Attack(float percent)
     {
@@ -37,6 +50,27 @@ public class ProjectileWeapon : WeaponBase
         Rigidbody rb = Instantiate(myBullet, camRay.origin, transform.rotation);
         rb.AddForce(Mathf.Max(percent, 0.1f) * force * camRay.direction, ForceMode.Impulse);
         Destroy(rb.gameObject, 1);
+
+        if (BulletType == EprojectileType.Steel)
+        {
+            print("Steel Bullets! You can now pierce through targets!");
+        }
+        else if (BulletType == EprojectileType.Poison)
+        {
+            print("Poison Bullets! You can now cause damage overtime!");
+        }
+        else if (BulletType == EprojectileType.Grass)
+        {
+            print("Grass Bullets! You can now curve bullets through the air!");
+        }
+        else if (BulletType != EprojectileType.Water)
+        {
+            print("Water Bullets! You can now cause splash damage!");
+        }
+        else
+        {
+            print("Your bullets have no special effect!");
+        }
     }
 
 

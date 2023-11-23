@@ -779,6 +779,7 @@ MonoBehaviour:
   force: 100
   recoilDistance: 0.2
   recoilDuration: 0.03
+  <BulletType>k__BackingField: 0
 --- !u!82 &1688531056
 AudioSource:
   m_ObjectHideFlags: 0
